@@ -20,7 +20,8 @@ Claude Code로 만든 ABAP 개발물을 abapGit으로 관리하는 저장소입�
 
 | 유형 | 규칙 | 예시 |
 |---|---|---|
-| 클래스 | `YCL_<모듈>_<목적>` (번호 없음) | `YCL_SD_ORDER_CREATE`, `YCL_CA_EXCEL_UPLOAD` |
+| 클래스 (글로벌, SE24) | `YCL_<모듈>_<목적>` (번호 없음) | `YCL_SD_ORDER_CREATE`, `YCL_CA_EXCEL_UPLOAD` |
+| 로컬 클래스 | `LCL_<목적>` — **ALV용으로만 사용** | `LCL_ALV_EVENT`, `LCL_ALV_HANDLER` |
 | 메소드 | 로직 목적 (접두어 없음, 동사로 시작) | `CREATE_ORDER`, `GET_CUSTOMER`, `CHECK_CREDIT` |
 | 함수 모듈 | `YF_<모듈>_<목적>` | `YF_SD_ORDER_CREATE`, `YF_CA_EXCEL_UPLOAD` |
 
