@@ -12,6 +12,9 @@ SAP 시스템에는 abapGit Online repo(Folder logic PREFIX, Starting folder `/s
 - 모든 패키지는 로컬(`$`)입니다. 패키지 이름은 30자 이내, 대문자.
 - 각 패키지 폴더에는 `package.devc.xml`(패키지 설명 `CTEXT` 포함)을 둡니다.
 - 루트 패키지에는 오브젝트를 두지 않습니다.
+- 대표 모듈은 아래 14개로 고정입니다. 새 모듈 약어를 임의로 만들지 않습니다 (필요하면 사용자에게 확인).
+  `CA`(모듈 간 공통), `MD`(기준정보), `FI`, `CO`, `TR`, `SD`, `MM`, `PP`, `QM`, `PM`, `WM`(WM/EWM), `LE`, `PS`, `HR`(HCM)
+- 여러 **모듈**이 함께 쓰는 오브젝트는 `$YCLAUDE_CA`(또는 그 하위 `_CA_00X`)에 둡니다.
 
 ## 오브젝트 배치 기준
 
@@ -31,7 +34,7 @@ SAP 시스템에는 abapGit Online repo(Folder logic PREFIX, Starting folder `/s
 
 ## 작업할 때
 
-- 새 하위 패키지를 만들면 `README.md`의 "패키지 목록" 표에 한 줄 추가합니다.
+- 새 하위 패키지를 만들면 `README.md`의 "모듈 하위 패키지" 표에 한 줄 추가합니다. (`_(아직 없음)_` 행은 첫 추가 시 삭제)
 - 요청받은 패키지 폴더만 수정합니다.
 - 실제 SAP 시스템 없이 작성하므로, 생성/수정한 오브젝트 목록과 SAP에서 Pull 후 확인할 점(활성화, 문법 체크)을 마지막에 알려줍니다.
 

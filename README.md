@@ -27,9 +27,31 @@ Claude Code로 만든 ABAP 개발물을 abapGit으로 관리하는 저장소입�
 
 ## 패키지 목록
 
-| 패키지 | 설명 |
+### 대표 모듈 패키지
+
+| 패키지 | 폴더 | 모듈 |
+|---|---|---|
+| `$YCLAUDE` | `src/` | 루트 (오브젝트 없음) |
+| `$YCLAUDE_CA` | `src/ca/` | 모듈 간 공통 (여러 모듈이 함께 쓰는 유틸 등) |
+| `$YCLAUDE_MD` | `src/md/` | 기준정보 (BP, 자재 마스터) |
+| `$YCLAUDE_FI` | `src/fi/` | 재무회계 |
+| `$YCLAUDE_CO` | `src/co/` | 관리회계 |
+| `$YCLAUDE_TR` | `src/tr/` | 자금관리 |
+| `$YCLAUDE_SD` | `src/sd/` | 영업/유통 |
+| `$YCLAUDE_MM` | `src/mm/` | 자재관리 |
+| `$YCLAUDE_PP` | `src/pp/` | 생산계획 |
+| `$YCLAUDE_QM` | `src/qm/` | 품질관리 |
+| `$YCLAUDE_PM` | `src/pm/` | 설비관리 |
+| `$YCLAUDE_WM` | `src/wm/` | 창고관리 (WM/EWM) |
+| `$YCLAUDE_LE` | `src/le/` | 물류실행 |
+| `$YCLAUDE_PS` | `src/ps/` | 프로젝트 |
+| `$YCLAUDE_HR` | `src/hr/` | 인사 (HCM) |
+
+### 모듈 하위 패키지
+
+| 패키지 | 업무 영역 |
 |---|---|
-| `$YCLAUDE` | 루트 |
+| _(아직 없음)_ | |
 
 ## SAP로 가져오기 (abapGit)
 
