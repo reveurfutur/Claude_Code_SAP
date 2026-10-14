@@ -151,6 +151,12 @@ Include 역할: `_TOP` 전역 선언, `_SCR` 선택 화면, `_C01` ALV 로컬 �
 - 루트 `$YCLAUDE`에는 **데이터 엘리먼트·도메인만** 둡니다.
 - 테이블·구조·테이블 타입은 항상 대표 모듈 패키지에 둡니다.
 
+## 개발 규칙
+
+| 항목 | 규칙 |
+|---|---|
+| ALV 컨테이너 | 기본은 **Docking Container** (`CL_GUI_DOCKING_CONTAINER`). 특정 화면 영역에 배치해야 하는 등 꼭 필요한 경우에만 Custom Container (`CL_GUI_CUSTOM_CONTAINER`)를 쓰고, 이유를 주석으로 남깁니다. |
+
 ## 패키지 목록
 
 ### 대표 모듈 패키지

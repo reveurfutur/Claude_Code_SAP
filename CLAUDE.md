@@ -65,6 +65,10 @@ SAP 시스템에는 abapGit Online repo(Folder logic PREFIX, Starting folder `/s
 - 원본 언어는 `E`입니다. XML 메타데이터의 언어 키도 `E`로 맞춥니다.
 - 텍스트 요소, 메시지 등 화면 문구는 영어로 작성합니다.
 
+## 개발 규칙
+
+- ALV 컨테이너: 기본은 `CL_GUI_DOCKING_CONTAINER`를 사용합니다. 화면 레이아웃상 특정 영역에 배치해야 하는 등 `CL_GUI_CUSTOM_CONTAINER`가 꼭 필요한 경우에만 Custom Container를 쓰고, 그 이유를 주석과 작업 보고에 남깁니다.
+
 ## 작업할 때
 
 - 새 하위 패키지를 만들면 `<폴더>/package.devc.xml`(CTEXT: `<모듈>_<번호>: <영문 설명>`, 60자 이내)을 만들고 `README.md`의 "모듈 하위 패키지" 표에 한 줄 추가합니다.
