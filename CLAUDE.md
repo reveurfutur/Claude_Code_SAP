@@ -28,9 +28,13 @@ SAP 시스템에는 abapGit Online repo(Folder logic PREFIX, Starting folder `/s
 
 ## 오브젝트 규칙
 
-- 모든 오브젝트 이름은 `Y`로 시작합니다. (예: `YSD001_SALES_REPORT`, `YCL_SD001_...`)
+- 모든 오브젝트 이름은 `Y`로 시작합니다. 유형별 명명 규칙은 `README.md`의 "오브젝트 명명 규칙" 표를 따릅니다. 표에 아직 없는 유형은 만들기 전에 사용자에게 규칙을 확인합니다.
+- 클래스: `YCL_<모듈>_<목적>` (번호 없음)
+  - `<모듈>`은 14개 모듈 약어, `<목적>`은 영어 대문자 단어를 `_`로 연결 (예: `YCL_SD_ORDER_CREATE`, `YCL_CA_EXCEL_UPLOAD`)
+  - 전체 30자 이내. 같은 모듈에 같은 이름이 이미 있으면 목적을 더 구체적으로 짓습니다.
+  - 클래스는 모듈 약어만 이름에 넣고, 실제 위치는 배치 기준에 따라 대표 모듈 또는 `_00X` 패키지에 둡니다.
 - 파일은 abapGit 직렬화 형식을 따릅니다: `<이름 소문자>.<유형>.abap` + `<이름 소문자>.<유형>.xml`
-  (예: `ysd001_report.prog.abap`, `ysd001_report.prog.xml`, `ycl_x.clas.abap`, `ycl_x.clas.xml`)
+  (예: `ycl_sd_order_create.clas.abap`, `ycl_sd_order_create.clas.xml`)
 - 원본 언어는 `E`입니다. XML 메타데이터의 언어 키도 `E`로 맞춥니다.
 - 텍스트 요소, 메시지 등 화면 문구는 영어로 작성합니다.
 
