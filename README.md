@@ -21,6 +21,42 @@ Claude Code로 만든 ABAP 개발물을 abapGit으로 관리하는 저장소입�
 | 유형 | 규칙 | 예시 |
 |---|---|---|
 | 클래스 | `YCL_<모듈>_<목적>` (번호 없음) | `YCL_SD_ORDER_CREATE`, `YCL_CA_EXCEL_UPLOAD` |
+| 메소드 | 로직 목적 (접두어 없음, 동사로 시작) | `CREATE_ORDER`, `GET_CUSTOMER`, `CHECK_CREDIT` |
+| 함수 모듈 | `YF_<모듈>_<목적>` | `YF_SD_ORDER_CREATE`, `YF_CA_EXCEL_UPLOAD` |
+
+### 변수·파라미터 명명 규칙
+
+이름은 `<범위><종류>_<이름>` 형식입니다. (예: `LV_COUNT`, `IT_ORDER`, `GO_ALV`)
+
+**범위 (첫 글자)**
+
+| 글자 | 범위 | 비고 |
+|---|---|---|
+| `L` | 로컬 변수 | 메소드·서브루틴·함수 안 |
+| `G` | 전역 변수 | 프로그램 전역 |
+| `I` | IMPORTING 파라미터 | 메소드·함수 모듈 공통 |
+| `E` | EXPORTING 파라미터 | 〃 |
+| `C` | CHANGING 파라미터 | 〃 |
+| `R` | RETURNING 파라미터 | 〃 |
+
+**종류 (두 번째 글자)**
+
+| 글자 | 종류 | 예시 |
+|---|---|---|
+| `V` | 변수 (단일 값) | `LV_MATNR`, `IV_VBELN`, `RV_RESULT` |
+| `S` | 구조체 | `LS_HEADER`, `ES_RETURN` |
+| `T` | 내부 테이블 | `LT_ITEM`, `IT_ORDER`, `CT_DATA` |
+| `C` | 상수 | `LC_MAX`, `GC_STATUS_OPEN` |
+| `O` | 참조 (`REF TO`) | `LO_ALV`, `GO_LOG`, `IO_ORDER` |
+| `R` | 레인지 테이블 | `LR_MATNR`, `IR_WERKS`, `RR_DATE` |
+
+**TYPES 선언**
+
+| 접두어 | 종류 | 예시 |
+|---|---|---|
+| `TV_` | 단일 값 타입 | `TV_AMOUNT` |
+| `TS_` | 구조체 타입 | `TS_ORDER` |
+| `TT_` | 테이블 타입 | `TT_ORDER` |
 
 ## 오브젝트 배치 기준
 

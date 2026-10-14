@@ -33,6 +33,12 @@ SAP 시스템에는 abapGit Online repo(Folder logic PREFIX, Starting folder `/s
   - `<모듈>`은 14개 모듈 약어, `<목적>`은 영어 대문자 단어를 `_`로 연결 (예: `YCL_SD_ORDER_CREATE`, `YCL_CA_EXCEL_UPLOAD`)
   - 전체 30자 이내. 같은 모듈에 같은 이름이 이미 있으면 목적을 더 구체적으로 짓습니다.
   - 클래스는 모듈 약어만 이름에 넣고, 실제 위치는 배치 기준에 따라 대표 모듈 또는 `_00X` 패키지에 둡니다.
+- 메소드: 로직 목적을 동사로 시작하는 이름으로 짓습니다. 접두어 없음 (예: `CREATE_ORDER`, `CHECK_CREDIT`)
+- 함수 모듈: `YF_<모듈>_<목적>` (예: `YF_SD_ORDER_CREATE`)
+- 변수·파라미터: `<범위><종류>_<이름>` — README "변수·파라미터 명명 규칙" 표를 반드시 따릅니다.
+  - 범위: `L` 로컬, `G` 전역, `I`/`E`/`C`/`R` = IMPORTING/EXPORTING/CHANGING/RETURNING (메소드·함수 모듈 공통)
+  - 종류: `V` 변수, `S` 구조체, `T` 내부 테이블, `C` 상수, `O` 참조(REF TO), `R` 레인지
+  - TYPES: `TV_` 단일 값, `TS_` 구조체, `TT_` 테이블
 - 파일은 abapGit 직렬화 형식을 따릅니다: `<이름 소문자>.<유형>.abap` + `<이름 소문자>.<유형>.xml`
   (예: `ycl_sd_order_create.clas.abap`, `ycl_sd_order_create.clas.xml`)
 - 원본 언어는 `E`입니다. XML 메타데이터의 언어 키도 `E`로 맞춥니다.
