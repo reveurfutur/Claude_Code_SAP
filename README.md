@@ -156,6 +156,7 @@ Include 역할: `_TOP` 전역 선언, `_SCR` 선택 화면, `_C01` ALV 로컬 �
 | 항목 | 규칙 |
 |---|---|
 | ALV 컨테이너 | 기본은 **Docking Container** (`CL_GUI_DOCKING_CONTAINER`). 특정 화면 영역에 배치해야 하는 등 꼭 필요한 경우에만 Custom Container (`CL_GUI_CUSTOM_CONTAINER`)를 쓰고, 이유를 주석으로 남깁니다. |
+| PBO의 ALV 처리 | ALV를 작은 MODULE로 쪼개지 않고 **ALV 전체(관련 메시지 포함)를 MODULE 하나**로 묶습니다. 그 안에서 `PERFORM`으로 단계별(컨테이너 생성, 필드카탈로그, 레이아웃, 이벤트, 출력/새로고침) 모듈화합니다. GUI STATUS/TITLE은 별도 MODULE. |
 
 ## 패키지 목록
 

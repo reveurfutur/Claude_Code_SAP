@@ -68,6 +68,26 @@ SAP 시스템에는 abapGit Online repo(Folder logic PREFIX, Starting folder `/s
 ## 개발 규칙
 
 - ALV 컨테이너: 기본은 `CL_GUI_DOCKING_CONTAINER`를 사용합니다. 화면 레이아웃상 특정 영역에 배치해야 하는 등 `CL_GUI_CUSTOM_CONTAINER`가 꼭 필요한 경우에만 Custom Container를 쓰고, 그 이유를 주석과 작업 보고에 남깁니다.
+- PBO의 ALV 처리: ALV를 작은 MODULE 여러 개로 쪼개지 않고 **ALV 전체(관련 메시지 포함)를 MODULE 하나**로 묶습니다. MODULE 안에서는 `PERFORM`으로 단계별 모듈화합니다. GUI STATUS/TITLE 설정은 별도 MODULE로 둡니다.
+
+  ```abap
+  PROCESS BEFORE OUTPUT.
+    MODULE status_0100.
+    MODULE display_alv_0100.
+
+  MODULE display_alv_0100 OUTPUT.
+    IF go_docking IS INITIAL.
+      PERFORM create_container.
+      PERFORM create_alv.
+      PERFORM set_fieldcat CHANGING gt_fieldcat.
+      PERFORM set_layout   CHANGING gs_layout.
+      PERFORM set_event.
+      PERFORM display_alv.
+    ELSE.
+      PERFORM refresh_alv.
+    ENDIF.
+  ENDMODULE.
+  ```
 
 ## 작업할 때
 
