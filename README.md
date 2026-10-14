@@ -24,6 +24,10 @@ Claude Code로 만든 ABAP 개발물을 abapGit으로 관리하는 저장소입�
 | 로컬 클래스 | `LCL_<목적>` — **ALV용으로만 사용** | `LCL_ALV_EVENT`, `LCL_ALV_HANDLER` |
 | 메소드 | 로직 목적 (접두어 없음, 동사로 시작) | `CREATE_ORDER`, `GET_CUSTOMER`, `CHECK_CREDIT` |
 | 함수 모듈 | `YF_<모듈>_<목적>` | `YF_SD_ORDER_CREATE`, `YF_CA_EXCEL_UPLOAD` |
+| 함수 그룹 | `YFG_<모듈><패키지번호>_<순번 3자리>` | `$YCLAUDE_MD_001`의 첫 함수 그룹 → `YFG_MD001_001` |
+| 서브루틴 (FORM) | 로직 목적 (동사로 시작), 목적 단위로 묶어 배치 | `GET_DATA`, `DISPLAY_ALV` |
+
+- 함수 그룹은 이름의 패키지와 같은 패키지에 만듭니다. 순번은 그 패키지 안에서 001부터 올립니다.
 
 ### 변수·파라미터 명명 규칙
 
@@ -34,7 +38,7 @@ Claude Code로 만든 ABAP 개발물을 abapGit으로 관리하는 저장소입�
 | 글자 | 범위 | 비고 |
 |---|---|---|
 | `L` | 로컬 변수 | 메소드·서브루틴·함수 안 |
-| `G` | 전역 변수 | 프로그램 전역 |
+| `G` | 전역 변수 | 프로그램 전역 + **클래스 속성** |
 | `I` | IMPORTING 파라미터 | 메소드·함수 모듈 공통 |
 | `E` | EXPORTING 파라미터 | 〃 |
 | `C` | CHANGING 파라미터 | 〃 |
@@ -58,6 +62,25 @@ Claude Code로 만든 ABAP 개발물을 abapGit으로 관리하는 저장소입�
 | `TV_` | 단일 값 타입 | `TV_AMOUNT` |
 | `TS_` | 구조체 타입 | `TS_ORDER` |
 | `TT_` | 테이블 타입 | `TT_ORDER` |
+
+**필드 심볼**: 위 규칙을 그대로 `< >` 안에 씁니다. (예: `<LV_VALUE>`, `<LS_ITEM>`, `<LT_DATA>`)
+
+**선택 화면**
+
+| 접두어 | 대상 | 예시 |
+|---|---|---|
+| `P_` | `PARAMETERS` | `P_WERKS`, `P_TEST` |
+| `S_` | `SELECT-OPTIONS` | `S_MATNR`, `S_ERDAT` |
+
+**FORM 파라미터**
+
+| 접두어 | 대상 | 예시 |
+|---|---|---|
+| `P_` | `USING` | `P_VBELN` |
+| `C_` | `CHANGING` | `C_RESULT` |
+| `PT_` | `TABLES` | `PT_ITEM` |
+
+- `TABLES`는 최대한 피합니다. 값을 바꾸는지 읽기만 하는지 구분되지 않기 때문입니다. 테이블은 `USING`(읽기) 또는 `CHANGING`(변경)으로 넘깁니다.
 
 ## 오브젝트 배치 기준
 

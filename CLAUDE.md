@@ -40,6 +40,13 @@ SAP 시스템에는 abapGit Online repo(Folder logic PREFIX, Starting folder `/s
   - 범위: `L` 로컬, `G` 전역, `I`/`E`/`C`/`R` = IMPORTING/EXPORTING/CHANGING/RETURNING (메소드·함수 모듈 공통)
   - 종류: `V` 변수, `S` 구조체, `T` 내부 테이블, `C` 상수, `O` 참조(REF TO), `R` 레인지
   - TYPES: `TV_` 단일 값, `TS_` 구조체, `TT_` 테이블
+  - 클래스 속성은 전역으로 보고 `G`를 씁니다 (`GV_`, `GT_`, `GO_` …).
+  - 필드 심볼: 같은 규칙을 `< >` 안에 (`<LS_ITEM>`, `<LT_DATA>`)
+  - 선택 화면: `PARAMETERS`는 `P_`, `SELECT-OPTIONS`는 `S_`
+- 함수 그룹: `YFG_<모듈><패키지번호>_<순번 3자리>` (예: `$YCLAUDE_MD_001` → `YFG_MD001_001`). 해당 패키지에 만들고 순번은 패키지별로 001부터.
+- FORM: 사용합니다. 이름은 로직 목적(동사로 시작), 목적 단위로 묶어 배치합니다.
+  - 파라미터: `USING` → `P_`, `CHANGING` → `C_`, `TABLES` → `PT_`
+  - `TABLES`는 최대한 쓰지 않습니다 (변경 여부가 드러나지 않음). 읽기는 `USING`, 변경은 `CHANGING`으로 넘깁니다.
 - 파일은 abapGit 직렬화 형식을 따릅니다: `<이름 소문자>.<유형>.abap` + `<이름 소문자>.<유형>.xml`
   (예: `ycl_sd_order_create.clas.abap`, `ycl_sd_order_create.clas.xml`)
 - 원본 언어는 `E`입니다. XML 메타데이터의 언어 키도 `E`로 맞춥니다.
