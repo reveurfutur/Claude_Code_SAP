@@ -76,7 +76,7 @@ Claude Code로 만든 ABAP 개발물을 abapGit으로 관리하는 저장소입�
 
 | 접두어 | 대상 | 예시 |
 |---|---|---|
-| `P_` | `USING` | `P_VBELN` |
+| `P` + 종류 (`PV_`/`PS_`/`PT_`/`PO_`/`PR_`) | `USING` | `PV_VBELN`, `PS_HEADER`, `PT_ITEM` |
 | `C_` | `CHANGING` | `C_RESULT` |
 | `PT_` | `TABLES` | `PT_ITEM` |
 
