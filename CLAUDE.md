@@ -70,6 +70,34 @@ SAP 시스템에는 abapGit Online repo(Folder logic PREFIX, Starting folder `/s
 - ALV 컨테이너: 기본은 `CL_GUI_DOCKING_CONTAINER`를 사용합니다. 화면 레이아웃상 특정 영역에 배치해야 하는 등 `CL_GUI_CUSTOM_CONTAINER`가 꼭 필요한 경우에만 Custom Container를 쓰고, 그 이유를 주석과 작업 보고에 남깁니다.
 - PBO의 ALV 처리: ALV를 작은 MODULE 여러 개로 쪼개지 않고 **ALV 전체(관련 메시지 포함)를 MODULE 하나**로 묶습니다. MODULE 안에서는 `PERFORM`으로 단계별 모듈화합니다. GUI STATUS/TITLE 설정은 별도 MODULE로 둡니다.
 - 화면 MODULE 이름: `<목적>_<화면번호 4자리>` (예: `status_0100`, `display_alv_0100`, `user_command_0100`)
+- PAI의 `BACK`, `EXIT`, `CANC` 버튼은 **EXIT COMMAND**로 처리합니다.
+  - GUI STATUS에서 세 기능 코드의 기능 유형을 `E`(Exit Command)로 지정합니다.
+  - `MODULE exit_<화면번호> AT EXIT-COMMAND`에서 처리하고, 나머지 기능 코드는 `user_command_<화면번호>`에서 처리합니다.
+  - OK 코드 필드는 `GV_OKCODE`로 선언하고, `user_command`에서는 값을 로컬로 옮긴 뒤 바로 CLEAR합니다.
+
+  ```abap
+  PROCESS AFTER INPUT.
+    MODULE exit_0100 AT EXIT-COMMAND.
+    MODULE user_command_0100.
+
+  MODULE exit_0100 INPUT.
+    CASE gv_okcode.
+      WHEN 'BACK' OR 'CANC'.
+        LEAVE TO SCREEN 0.
+      WHEN 'EXIT'.
+        LEAVE PROGRAM.
+    ENDCASE.
+  ENDMODULE.
+
+  MODULE user_command_0100 INPUT.
+    DATA(lv_okcode) = gv_okcode.
+    CLEAR gv_okcode.
+    CASE lv_okcode.
+      WHEN 'SAVE'.
+        PERFORM save_data.
+    ENDCASE.
+  ENDMODULE.
+  ```
 
   ```abap
   PROCESS BEFORE OUTPUT.
