@@ -45,9 +45,9 @@ SAP 시스템에는 abapGit Online repo(Folder logic PREFIX, Starting folder `/s
   - 선택 화면: `PARAMETERS`는 `P_`, `SELECT-OPTIONS`는 `S_`
 - 함수 그룹: `YFG_<모듈><패키지번호>_<순번 3자리>` (예: `$YCLAUDE_MD_001` → `YFG_MD001_001`). 해당 패키지에 만들고 순번은 패키지별로 001부터. 대표 모듈 패키지는 패키지번호 `000` (예: `$YCLAUDE_MD` → `YFG_MD000_001`).
 - FORM: 사용합니다. 이름은 로직 목적(동사로 시작), 목적 단위로 묶어 배치합니다.
-  - 파라미터: `USING` → `P` + 종류 글자 (`PV_`, `PS_`, `PT_`, `PO_`, `PR_`), `CHANGING` → `C_`, `TABLES` → `PT_`
+  - 파라미터: `USING` → `P` + 종류 글자 (`PV_`, `PS_`, `PT_`, `PO_`, `PR_`), `CHANGING` → `C_`
   - 선택 화면 `P_`와 겹치지 않도록 USING 파라미터는 반드시 종류 글자를 붙입니다.
-  - `TABLES`는 최대한 쓰지 않습니다 (변경 여부가 드러나지 않음). 읽기는 `USING`, 변경은 `CHANGING`으로 넘깁니다.
+  - `TABLES`는 사용하지 않습니다 (변경 여부가 드러나지 않음). 읽기는 `USING`(`PT_`), 변경은 `CHANGING`으로 넘깁니다.
 - 파일은 abapGit 직렬화 형식을 따릅니다: `<이름 소문자>.<유형>.abap` + `<이름 소문자>.<유형>.xml`
   (예: `ycl_sd_order_create.clas.abap`, `ycl_sd_order_create.clas.xml`)
 - 원본 언어는 `E`입니다. XML 메타데이터의 언어 키도 `E`로 맞춥니다.
