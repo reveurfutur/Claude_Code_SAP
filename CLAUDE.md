@@ -65,6 +65,14 @@ SAP 시스템에는 abapGit Online repo(Folder logic PREFIX, Starting folder `/s
 - 원본 언어는 `E`입니다. XML 메타데이터의 언어 키도 `E`로 맞춥니다.
 - 텍스트 요소, 메시지 등 화면 문구는 영어로 작성합니다.
 
+## 공통 오브젝트
+
+- 상수는 프로그램에 새로 선언하기 전에 `YIF_CA_CONSTANTS`(`src/ca/`)에 있는지 확인하고 있으면 사용합니다 (`yif_ca_constants=>gc_...`).
+- 화면/ALV 리포트 프로그램은 `REPORT` 바로 다음에 `INCLUDE ycacommon.`을 넣고, 공통 데이터(`GV_OKCODE`, `GO_DOCKING`, `GO_GRID`, `GT_FIELDCAT`, `GS_LAYOUT`, `GS_VARIANT`, `GT_EXCLUDE`)를 다시 선언하지 않습니다.
+- ALV MODULE과 exit MODULE에서는 공통 FORM(`CA_CREATE_CONTAINER`, `CA_CREATE_ALV`, `CA_SET_FIELDCAT`, `CA_SET_LAYOUT`, `CA_DISPLAY_ALV`, `CA_REFRESH_ALV`, `CA_FREE_ALV`, `CA_EXIT_COMMAND`)을 사용합니다. 사용 예는 README "공통 오브젝트".
+- 프로그램 FORM 이름은 `CA_`로 시작하지 않습니다 (공통 FORM 전용 접두어).
+- 공통 Include(`YCACOMMON*`)와 `YIF_CA_CONSTANTS`는 모든 프로그램에 영향을 주므로, 수정·추가 전에 사용자에게 확인합니다. 업무 로직은 넣지 않습니다.
+
 ## 개발 규칙
 
 - ALV 컨테이너: 기본은 `CL_GUI_DOCKING_CONTAINER`를 사용합니다. 화면 레이아웃상 특정 영역에 배치해야 하는 등 `CL_GUI_CUSTOM_CONTAINER`가 꼭 필요한 경우에만 Custom Container를 쓰고, 그 이유를 주석과 작업 보고에 남깁니다.
