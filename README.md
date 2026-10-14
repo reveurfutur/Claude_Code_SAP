@@ -78,7 +78,7 @@ Claude Code로 만든 ABAP 개발물을 abapGit으로 관리하는 저장소입�
 | 접두어 | 대상 | 예시 |
 |---|---|---|
 | `P` + 종류 (`PV_`/`PS_`/`PT_`/`PO_`/`PR_`) | `USING` | `PV_VBELN`, `PS_HEADER`, `PT_ITEM` |
-| `C_` | `CHANGING` | `C_RESULT` |
+| `C` + 종류 (`CV_`/`CS_`/`CT_`/`CO_`/`CR_`) | `CHANGING` | `CV_RESULT`, `CS_HEADER`, `CT_ITEM` |
 
 - `TABLES`는 **사용하지 않습니다.** 값을 바꾸는지 읽기만 하는지 구분되지 않기 때문입니다. 테이블은 `USING`(읽기, `PT_`) 또는 `CHANGING`(변경)으로 넘깁니다.
 
