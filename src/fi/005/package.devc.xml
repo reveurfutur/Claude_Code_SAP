@@ -3,7 +3,7 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <DEVC>
-    <CTEXT>FI_005: Closing and tax</CTEXT>
+    <CTEXT>FI_005: Period-end closing</CTEXT>
    </DEVC>
   </asx:values>
  </asx:abap>
