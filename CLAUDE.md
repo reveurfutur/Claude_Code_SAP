@@ -68,8 +68,7 @@ SAP 시스템에는 abapGit Online repo(Folder logic PREFIX, Starting folder `/s
 ## 공통 오브젝트
 
 - 상수는 프로그램에 새로 선언하기 전에 `YIF_CA_CONSTANTS`(`src/ca/`)에 있는지 확인하고 있으면 사용합니다 (`yif_ca_constants=>gc_...`).
-- 화면/ALV 리포트 프로그램은 `REPORT` 바로 다음에 `INCLUDE ycacommon.`을 넣고, 공통 데이터(`GV_OKCODE`, `GO_DOCKING`, `GO_GRID`, `GT_FIELDCAT`, `GS_LAYOUT`, `GS_VARIANT`, `GT_EXCLUDE`)를 다시 선언하지 않습니다.
-- ALV MODULE과 exit MODULE에서는 공통 FORM(`CA_CREATE_CONTAINER`, `CA_CREATE_ALV`, `CA_SET_FIELDCAT`, `CA_SET_LAYOUT`, `CA_DISPLAY_ALV`, `CA_REFRESH_ALV`, `CA_FREE_ALV`, `CA_EXIT_COMMAND`)을 사용합니다. 사용 예는 README "공통 오브젝트".
+- 화면/ALV 리포트 프로그램은 `REPORT` 바로 다음에 `INCLUDE ycacommon.`을 넣습니다. `YCACOMMON_TOP`(공통 데이터)·`YCACOMMON_F01`(공통 FORM)에 이미 있는 것은 프로그램에서 다시 선언하지 않습니다. (현재 둘 다 비어 있음 — 작업 전 실제 내용을 확인)
 - 프로그램 FORM 이름은 `CA_`로 시작하지 않습니다 (공통 FORM 전용 접두어).
 - 공통 Include(`YCACOMMON*`)와 `YIF_CA_CONSTANTS`는 모든 프로그램에 영향을 주므로, 수정·추가 전에 사용자에게 확인합니다. 업무 로직은 넣지 않습니다.
 

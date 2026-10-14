@@ -158,21 +158,8 @@ Include 역할: `_TOP` 전역 선언, `_SCR` 선택 화면, `_C01` ALV 로컬 �
 |---|---|---|
 | `YIF_CA_CONSTANTS` (인터페이스) | `$YCLAUDE_CA` | 공통 상수: 메시지 유형(`GC_MSGTY_*`), 기능 코드(`GC_UCOMM_*`), ALV 값 |
 | `YCACOMMON` (Include) | `$YCLAUDE_CA_002` | 상위 Include. 아래 두 개를 순서대로 포함 |
-| ├ `YCACOMMON_TOP` | 〃 | 공통 전역 데이터: `GV_OKCODE`, `GO_DOCKING`, `GO_GRID`, `GT_FIELDCAT`, `GS_LAYOUT`, `GS_VARIANT`, `GT_EXCLUDE` |
-| └ `YCACOMMON_F01` | 〃 | 공통 FORM (`CA_` 접두어) |
-
-**공통 FORM**
-
-| FORM | 역할 |
-|---|---|
-| `CA_CREATE_CONTAINER` | Docking Container 생성 |
-| `CA_CREATE_ALV` | ALV Grid 생성 |
-| `CA_SET_FIELDCAT` | 내부 테이블 구조로 필드카탈로그 자동 생성 |
-| `CA_SET_LAYOUT` | 기본 레이아웃(zebra, 열 너비 최적화, 다중 선택)·변형 |
-| `CA_DISPLAY_ALV` | ALV 최초 출력 |
-| `CA_REFRESH_ALV` | 스크롤 위치 유지하며 새로고침 |
-| `CA_FREE_ALV` | ALV·컨테이너 해제 |
-| `CA_EXIT_COMMAND` | `BACK`/`CANC` → 해제 후 `LEAVE TO SCREEN 0`, `EXIT` → 해제 후 `LEAVE PROGRAM` |
+| ├ `YCACOMMON_TOP` | 〃 | 공통 전역 데이터 (현재 비어 있음) |
+| └ `YCACOMMON_F01` | 〃 | 공통 FORM, `CA_` 접두어 (현재 비어 있음) |
 
 **사용 예**
 
@@ -185,25 +172,8 @@ INCLUDE ysd00100_scr.    " 선택 화면
 INCLUDE ysd00100_o01.    " PBO
 INCLUDE ysd00100_i01.    " PAI
 INCLUDE ysd00100_f01.    " 프로그램 FORM
-
-MODULE display_alv_0100 OUTPUT.
-  IF go_docking IS INITIAL.
-    PERFORM ca_create_container.
-    PERFORM ca_create_alv.
-    PERFORM ca_set_fieldcat USING gt_data CHANGING gt_fieldcat.
-    PERFORM ca_set_layout CHANGING gs_layout gs_variant.
-    PERFORM ca_display_alv CHANGING gt_data.
-  ELSE.
-    PERFORM ca_refresh_alv.
-  ENDIF.
-ENDMODULE.
-
-MODULE exit_0100 INPUT.
-  PERFORM ca_exit_command USING gv_okcode.
-ENDMODULE.
 ```
 
-- 화면의 OK 코드 필드 이름은 `GV_OKCODE`로 지정합니다.
 - 공통 Include를 고치면 사용하는 **모든 프로그램**이 영향을 받습니다. 거의 바뀌지 않는 골격만 두고 업무 로직은 넣지 않습니다.
 
 ## 개발 규칙
