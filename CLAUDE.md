@@ -43,7 +43,7 @@ SAP 시스템에는 abapGit Online repo(Folder logic PREFIX, Starting folder `/s
   - 클래스 속성은 전역으로 보고 `G`를 씁니다 (`GV_`, `GT_`, `GO_` …).
   - 필드 심볼: 같은 규칙을 `< >` 안에 (`<LS_ITEM>`, `<LT_DATA>`)
   - 선택 화면: `PARAMETERS`는 `P_`, `SELECT-OPTIONS`는 `S_`
-- 함수 그룹: `YFG_<모듈><패키지번호>_<순번 3자리>` (예: `$YCLAUDE_MD_001` → `YFG_MD001_001`). 해당 패키지에 만들고 순번은 패키지별로 001부터.
+- 함수 그룹: `YFG_<모듈><패키지번호>_<순번 3자리>` (예: `$YCLAUDE_MD_001` → `YFG_MD001_001`). 해당 패키지에 만들고 순번은 패키지별로 001부터. 대표 모듈 패키지는 패키지번호 `000` (예: `$YCLAUDE_MD` → `YFG_MD000_001`).
 - FORM: 사용합니다. 이름은 로직 목적(동사로 시작), 목적 단위로 묶어 배치합니다.
   - 파라미터: `USING` → `P` + 종류 글자 (`PV_`, `PS_`, `PT_`, `PO_`, `PR_`), `CHANGING` → `C_`, `TABLES` → `PT_`
   - 선택 화면 `P_`와 겹치지 않도록 USING 파라미터는 반드시 종류 글자를 붙입니다.
